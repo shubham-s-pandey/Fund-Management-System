@@ -1,0 +1,41 @@
+<nav  class="navbar navbar-expand-md navbar-dark bg-dark" style="margin-bottom: 15px; border-radius: 25px;background-image: linear-gradient(to right, blue , cyan);">
+<div class="container">
+  <img src="/images/logo.PNG" style="width: auto; height: auto; margin-top: auto;margin-bottom: auto; margin-left: auto; margin-right: auto;"></img>
+<a href="/profile">Profile <i class="fa fa-home"></i></a>
+<a href="/logout">Logout <i class="fa fa-sign-out"></i></a>
+
+</div>
+</nav>
+</nav>
+<h2 style="font: italic bold 24px/60px Georgia, serif;"><center>{{viewTitle}}</h2></center>
+<form action="/salary" method="POST" autocomplete="off" style=" background-image: linear-gradient(to bottom, white , rgb(221, 221, 221)); border-radius:25px; padding:15px">
+    <input type="hidden" name="_id" value="{{salary._id}}">
+    <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" class="form-control" name="fullName" placeholder="Full Name" value="{{salary.fullName}}">
+        <div class="text-danger">
+            {{salary.fullNameError}}</div>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" name="email" placeholder="Email" value="{{salary.email}}">
+        <div class="text-danger">
+            {{salary.emailError}}</div>
+    </div>
+    
+    <div class="form-row">
+            </div>
+             <div class="form-group col-md-6">
+                <label>Month</label>
+                <input type="text" class="form-control" name="month" placeholder="Month" value="{{salary.month}}">
+            </div>
+            <div class="form-group col-md-6">
+                <label>Salary</label>
+                <input type="text" class="form-control" name="salary" placeholder="Salary" value="{{salary.salary}}">
+            </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-info" style=" background-image: linear-gradient(to left, rgb(0, 162, 255) ,blue); border-radius: 25px;padding: 14px 25px;"><i class="fa fa-database"></i> Submit</button>
+        <a class="btn btn-secondary" href="/salary/listsalary"><i class="fa fa-list-alt"></i> View All</a>
+    
+</form>

@@ -1,0 +1,46 @@
+<nav  class="navbar navbar-expand-md navbar-dark bg-dark" style="background-image: linear-gradient(to right, blue , cyan);margin-bottom: 15px; border-radius: 25px;">
+<div class="container">
+  <img src="/images/logo.PNG" style="width: auto; height: 200px; margin-top: auto;margin-bottom: auto; margin-left: auto; margin-right: auto;"></img>
+<a href="/profile">Profile <i class="fa fa-home"></i></a>
+<a href="/logout">Logout <i class="fa fa-sign-out"></i></a>
+
+</div>
+</nav>
+</nav>
+<h2 style="font: italic bold 24px/60px Georgia, serif;"><a class="btn btn-secondary" href="/Fund"><i class="fa fa-plus">Create New</i> </a> Fund List</h2>
+<table class="table table-hover" style="border-radius: 25px; background-image: linear-gradient(to bottom, white , rgb(221, 221, 221));"> 
+            <thead>
+        <tr>
+            <th>Full Name <i class="fa fa-address-book"></i></th>
+            <th>Email <i class="fa fa-envelope"></i></th>
+            <th>Mobile <i class="fa fa-mobile-phone"></i></th>
+            <th>Amount <i class="fa fa-map"></i></th>
+            <th>Created by <i class="fa fa-user-plus"></i></th>
+            <th>Last Modified by <i class="fa fa-gear"></i></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {{#each list}}
+       
+        <tr>
+            <td>{{this.fullName}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.mobile}}</td>
+            <td>{{this.Amount}}</td>
+            <td>{{this.createid}}</td>
+            <td> {{this.idno}}</td>
+            
+            <td>
+                <a href="/Fund/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record?');" style="background-image: linear-gradient(to left, red ,orange); border-radius: 5px;"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+    
+        {{/each}}
+    </tbody>
+</table>
+
+
+
+

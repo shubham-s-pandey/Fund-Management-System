@@ -7,5 +7,4 @@ mongoose.connect('mongodb://localhost:27017/FundDB',{ useNewUrlParser: true}, (e
 
 require('./Fund.model');
 require('./salary.model');
-require('./saving.model');
 require('./user');

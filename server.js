@@ -16,7 +16,6 @@ const FundController = require('./controllers/FundController');
 
 const salaryController = require('./controllers/salaryController');
 
-const savingController = require('./controllers/savingController');
 
 
 const app = express();
@@ -66,8 +65,6 @@ app.use('/', require('./controllers/index'));
 app.use('/salary', salaryController);
 app.use('/', require('./controllers/salaryindex'));
 
-app.use('/saving', savingController);
-app.use('/', require('./controllers/savingindex'));
 
 app.listen(3000, ()=>{
   console.log('Express server started at port: 3000');

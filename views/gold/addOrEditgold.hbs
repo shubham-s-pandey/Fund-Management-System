@@ -1,6 +1,6 @@
 <nav  class="navbar navbar-expand-md navbar-dark bg-dark" style="margin-bottom: 15px; border-radius: 25px;background-image: linear-gradient(to right, blue , cyan);">
 <div class="container">
-  <img src="/images/logo.PNG" style="width: 200px; height: 200px; margin-top: auto;margin-bottom: auto; margin-left: auto; margin-right: auto;"></img>
+  <img src="/images/logo.PNG" style="width: auto; height: auto; margin-top: auto;margin-bottom: auto; margin-left: auto; margin-right: auto;"></img>
 <a href="/profile">Profile <i class="fa fa-home"></i></a>
 <a href="/logout">Logout <i class="fa fa-sign-out"></i></a>
 
@@ -9,28 +9,29 @@
 </nav>
 <h2 style="font: italic bold 24px/60px Georgia, serif;"><center>{{viewTitle}}</h2></center>
 <form action="/gold" method="POST" autocomplete="off" style=" background-image: linear-gradient(to bottom, white , rgb(221, 221, 221)); border-radius:25px; padding:15px">
-    <input type="hidden" name="_id" value="{{Fund._id}}">
+    <input type="hidden" name="_id" value="{{gold._id}}">
     <div class="form-group">
         <label>Full Name</label>
-        <input type="text" class="form-control" name="fullName" placeholder="Full Name" value="{{Fund.fullName}}">
+        <input type="text" class="form-control" name="fullName" placeholder="Full Name" value="{{gold.fullName}}">
         <div class="text-danger">
-            {{Fund.fullNameError}}</div>
+            {{gold.fullNameError}}</div>
     </div>
-
+  
     
     <div class="form-row">
             <div class="form-group col-md-6">
                 <label>Mobile</label>
-                <input type="text" class="form-control" name="mobile" placeholder="Mobile" value="{{Fund.mobile}}">
+                <input type="text" class="form-control" name="mobile" placeholder="Mobile" value="{{gold.mobile}}">
             </div>
              <div class="form-group col-md-6">
                 <label>Amount</label>
-                <input type="text" class="form-control" name="Amount" placeholder="Amount" value="{{Fund.Amount}}">
+                <input type="text" class="form-control" name="Amount" placeholder="Amount" value="{{gold.Amount}}">
             </div>
             
     </div>
+    
     <div class="form-group">
         <button type="submit" class="btn btn-info" style=" background-image: linear-gradient(to left, rgb(0, 162, 255) ,blue); border-radius: 25px;padding: 14px 25px;"><i class="fa fa-database"></i> Submit</button>
-        <a class="btn btn-secondary" href="/gold/list"><i class="fa fa-list-alt"></i> View All</a>
-    </div>
+        <a class="btn btn-secondary" href="/gold/listgold"><i class="fa fa-list-alt"></i> View All</a>
+    
 </form>

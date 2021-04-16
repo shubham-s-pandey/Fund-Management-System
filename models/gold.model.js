@@ -27,4 +27,4 @@ goldSchema.path('email').validate((val) => {
 },'Invalid e-mail.');
 
 
-mongoose.model('gold',goldSchema);
+mongoose.model('Gold',goldSchema);

@@ -77,7 +77,7 @@ app.use('/shares', sharesController);
 app.use('/', require('./controllers/sharesindex'));
 
 app.use('/gold', goldController);
-app.use('/', require('./controllers/gold'));
+app.use('/', require('./controllers/goldindex'));
 
 app.listen(3000, ()=>{
   console.log('Express server started at port: 3000');

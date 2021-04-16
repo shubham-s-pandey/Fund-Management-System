@@ -91,6 +91,9 @@ router.get('/salary/list',isAuthenticated, (req, res, next) => {
   res.render('/salary/list');
 });
 */
+router.get('/gold/list',isAuthenticated, (req, res, next) => {
+  res.render('/gold/list');
+});
 
 router.get('/logout', (req, res, next) => {
   req.logout();

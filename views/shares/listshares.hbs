@@ -7,13 +7,14 @@
 </div>
 </nav>
 </nav>
-<h2 style="font: italic bold 24px/60px Georgia, serif;"><a class="btn btn-secondary" href="/salary"><i class="fa fa-plus">Create New</i> </a> Salary List</h2>
+<h2 style="font: italic bold 24px/60px Georgia, serif;"><a class="btn btn-secondary" href="/shares"><i class="fa fa-plus">Create New</i> </a> Shares List</h2>
 <table class="table table-hover" style="border-radius: 25px; background-image: linear-gradient(to bottom, white , rgb(221, 221, 221));"> 
             <thead>
         <tr>
             <th>Full Name <i class="fa fa-address-book"></i></th>
-            <th>Month <i class="fa fa-calendar"></i></th>
-            <th>Salary <i class="fa fa-money"></i></th>
+            <th>Company <i class="fa fa-building"></i></th>
+            <th>Total no of shares <i class="fa fa-dollar"></i></th>
+            <th>Estimated Amount <i class="fa fa-money"></i></th>
             {{!-- <th>Created by <i class="fa fa-user-plus"></i></th>
             <th>Last Modified by <i class="fa fa-gear"></i></th> --}}
             <th></th>
@@ -21,17 +22,18 @@
     </thead>
     <tbody>
         
-        {{#each listsalary}}
+        {{#each listshares}}
        
         <tr>
             <td>{{this.fullName}}</td>
-            <td>{{this.month}}</td>
-            <td>{{this.salary}}</td>
+            <td>{{this.company}}</td>
+            <td>{{this.address}}</td>
+            <td>{{this.amount}}</td>
             {{!-- <td>{{this.createid}}</td>
             <td> {{this.idno}}</td> --}}
             <td>
-                <a href="/salary/{{this._id}}" style=" background-image: linear-gradient(to right, green ,rgb(202, 202, 5)); border-radius: 5px;"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
-                <a href="/salary/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record?');" style="background-image: linear-gradient(to left, red ,orange); border-radius: 5px;"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+                <a href="/shares/{{this._id}}" style=" background-image: linear-gradient(to right, green ,rgb(202, 202, 5)); border-radius: 5px;"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <a href="/shares/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record?');" style="background-image: linear-gradient(to left, red ,orange); border-radius: 5px;"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
             </td>
         </tr>
     

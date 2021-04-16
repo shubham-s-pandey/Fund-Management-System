@@ -16,6 +16,11 @@ const FundController = require('./controllers/FundController');
 
 const salaryController = require('./controllers/salaryController');
 
+const propertyController = require('./controllers/propertyController');
+
+const sharesController = require('./controllers/sharesController');
+
+const goldController = require('./controllers/goldController');
 
 
 const app = express();
@@ -65,6 +70,14 @@ app.use('/', require('./controllers/index'));
 app.use('/salary', salaryController);
 app.use('/', require('./controllers/salaryindex'));
 
+app.use('/property', propertyController);
+app.use('/', require('./controllers/propertyindex'));
+
+app.use('/shares', sharesController);
+app.use('/', require('./controllers/sharesindex'));
+
+app.use('/gold', goldController);
+app.use('/', require('./controllers/gold'));
 
 app.listen(3000, ()=>{
   console.log('Express server started at port: 3000');

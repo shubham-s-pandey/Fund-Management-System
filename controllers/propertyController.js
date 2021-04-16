@@ -1,14 +1,14 @@
 const express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
-const Salary = mongoose.model('Salary');     
+const Property = mongoose.model('Property');     
 const passport = require('passport');
 const User = mongoose.model('user'); 
 
 
 router.get('/',isAuthenticated, (req,res) => {
-    res.render("salary/addOrEditsalary",{
-        viewTitle : "Insert Salary"
+    res.render("property/addOrEditproperty",{
+        viewTitle : "Insert Property details"
         });
     
 });
@@ -23,24 +23,26 @@ router.post('/',isAuthenticated,(req,res) => {
 });
 
 function insertRecord(req,res){
-    var salary = new Salary();
-    salary.idno = req.user.email;
-    salary.createid = req.user.email;
-    salary.fullName = req.body.fullName;
-    salary.email = req.user.email;
+    var property = new Property();
+    property.idno = req.user.email;
+    property.createid = req.user.email;
+    property.fullName = req.body.fullName;
+    property.email = req.user.email;
     
     
-    salary.month = req.body.month;
-    salary.salary = req.body.salary;
-    salary.save((err, doc) => {
+    property.location = req.body.location;
+    property.address = req.body.address;
+    property.amount = req.body.amount;
+
+    property.save((err, doc) => {
         if(!err)
-            res.redirect('salary/listsalary');
+            res.redirect('property/listproperty');
         else{
             if(err.name == 'ValidationError'){
                 handleValidationError(err,req.body);
-                res.render("salary/addOrsalary",{
-                    viewTitle : "Insert Salary",
-                    salary: req.body
+                res.render("property/addOrproperty",{
+                    viewTitle : "Insert Property",
+                    property: req.body
             });
             }
             else
@@ -51,14 +53,14 @@ function insertRecord(req,res){
 }
 
 function updateRecord(req,res){
-    Salary.findOneAndUpdate({_id:req.body._id}, req.body, { new: true},(err, doc ) => {
-        if(!err){res.redirect('salary/listsalary');}
+    Property.findOneAndUpdate({_id:req.body._id}, req.body, { new: true},(err, doc ) => {
+        if(!err){res.redirect('property/listproperty');}
         else{
             if(err.name == 'ValidationError'){
                 handleValidationError(err, req.body);
-                res.render("salary/addOrEditsalary",{
-                    viewTitle: 'update Salary',
-                    salary: req.body,
+                res.render("property/addOrEditproperty",{
+                    viewTitle: 'update property details',
+                    property: req.body,
 
                 });
             }
@@ -67,7 +69,7 @@ function updateRecord(req,res){
         }
     });
 
-    Salary.findOneAndUpdate({_id:req.body._id}, {$set:{idno:req.user.email}}, {new: true}, (err, doc) => {
+    Property.findOneAndUpdate({_id:req.body._id}, {$set:{idno:req.user.email}}, {new: true}, (err, doc) => {
         if (err) {
             console.log("Something wrong when updating data!");
         }
@@ -76,17 +78,17 @@ function updateRecord(req,res){
     });
 }
 
-router.get('/listsalary',isAuthenticated,(req,res) => {
-    Salary.find({ email: req.user.email},(err, docs) => {
+router.get('/listproperty',isAuthenticated,(req,res) => {
+    Property.find({ email: req.user.email},(err, docs) => {
         if(!err){
-            res.render("salary/listsalary",{
+            res.render("property/listproperty",{
                 
-                listsalary: docs
+                listproperty: docs
 
             });
         }
         else{
-            console.log('Error in retrieving salary list :' + err);
+            console.log('Error in retrieving property list :' + err);
         }
     });
 });
@@ -120,21 +122,21 @@ function isAuthenticated(req, res, next) {
 
 
 router.get('/:id',isAuthenticated, (req,res) => {
-    Salary.findById(req.params.id, (err, doc) =>{
+    Property.findById(req.params.id, (err, doc) =>{
         if(!err){
-            res.render("salary/addOrEditsalary",{
-                viewTitle: "Update Salary",
-                salary: doc
+            res.render("property/addOrEditproperty",{
+                viewTitle: "Update property",
+                property: doc
             })
         }
     });
 });
 router.get('/delete/:id',isAuthenticated,(req,res) => {
-    Salary.findByIdAndRemove(req.params.id,(err, doc) =>{
+    Property.findByIdAndRemove(req.params.id,(err, doc) =>{
         if(!err){
-            res.redirect('/salary/listsalary');
+            res.redirect('/property/listproperty');
         }
-        else {console.log('Error in salary delete:' + err);}
+        else {console.log('Error in property delete:' + err);}
     });
 });
 

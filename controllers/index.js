@@ -2,6 +2,7 @@ const router = require('express').Router();
 const passport = require('passport');
 const mongoose = require('mongoose');
 const User = mongoose.model('user');
+const Fund = mongoose.model('Fund');
 
 
 
@@ -9,10 +10,23 @@ const User = mongoose.model('user');
 router.get('/profile',isAuthenticated,(req,res) => {
   User.find((err, docs) => {
       if(!err){
-          res.render("profile",{
+
+
+        Fund.find({email : req.user.email},(err, docs) => {
+          if(!err){
+            res.render("profile",{
               name: req.user.email,
-              id: req.user._id
+              id: req.user._id,
+              list: docs
           });
+          }
+          else{
+              console.log('Error in retrieving Fund list :' + err);
+          }
+      });
+
+
+          
       }
       else{
           console.log('Error in retrieving Fund list :' + err);
@@ -20,6 +34,15 @@ router.get('/profile',isAuthenticated,(req,res) => {
   });
 });
 //
+
+
+//Test
+
+// router.get('/',isAuthenticated,(req,res) => {
+  
+// });
+
+//\test
 
 
 

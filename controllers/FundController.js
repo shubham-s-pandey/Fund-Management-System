@@ -14,6 +14,7 @@ router.get('/',isAuthenticated, (req,res) => {
 });
 
 router.post('/',isAuthenticated,(req,res) => {
+    
     if(req.body._id == '')
         insertRecord(req,res);
         else{
@@ -23,6 +24,9 @@ router.post('/',isAuthenticated,(req,res) => {
 });
 
 function insertRecord(req,res){
+
+    console.log("i am here");
+    console.table(req.body)
     var fund = new Fund();
     fund.idno = req.user.email;
     fund.createid = req.user.email;
@@ -30,7 +34,7 @@ function insertRecord(req,res){
     fund.email = req.body.email;
     
     
-    fund.mobile = req.body.mobile;
+    fund.mobile = req.body.month;
     fund.Amount = req.body.Amount;
     fund.save((err, doc) => {
         if(!err)
@@ -50,10 +54,10 @@ function insertRecord(req,res){
 
 }
 
-router.get('/list',isAuthenticated,(req,res) => {
+router.get('/',isAuthenticated,(req,res) => {
     Fund.find((err, docs) => {
         if(!err){
-            res.render("Fund/list",{
+            res.render("profile",{
                 
                 list: docs
 

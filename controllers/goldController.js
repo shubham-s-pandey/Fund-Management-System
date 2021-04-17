@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Gold = mongoose.model('Gold');     
 const passport = require('passport');
 const User = mongoose.model('user'); 
-
+const Fund = mongoose.model('Fund'); 
 
 router.get('/',isAuthenticated, (req,res) => {
     res.render("gold/addOrEditgold",{
@@ -33,6 +33,46 @@ function insertRecord(req,res){
     gold.location = req.body.location;
     gold.address = req.body.address;
     gold.amount = req.body.amount;
+
+    console.log("fetch to fund");
+
+    // const fund = new Fund()
+    // fund.idno = req.user.email;
+    // fund.createid = req.user.email;
+    // fund.fullName = req.body.fullName;
+    // fund.email = req.body.email;
+    
+    
+    // fund.month = req.body.month;
+    // fund.Amount = req.body.Amount;
+    // fund.save();
+    Fund.find({email : req.user.email},(err,userh)=> {
+
+        console.log("inside fund", userh);
+        if(userh.length != 0){
+       
+        const j = userh[0].Amount + Number(req.body.amount);
+        console.log("user exist",j );
+            Fund.update({email : req.user.email},{$set:{ Amount : j }},function (error, response) {
+                console.log(error);
+                console.log(response);
+                
+            })
+        }
+        else {
+            const fund = new Fund()
+    fund.idno = req.user.email;
+    fund.createid = req.user.email;
+    fund.fullName = req.body.fullName;
+    fund.email = req.user.email;    
+    fund.month = req.body.month;
+    fund.Amount = req.body.salary;
+    fund.save();
+        }
+    })
+
+    
+//     
 
     gold.save((err, doc) => {
         if(!err)
@@ -133,6 +173,23 @@ router.get('/:id',isAuthenticated, (req,res) => {
 });
 router.get('/delete/:id',isAuthenticated,(req,res) => {
     Gold.findByIdAndRemove(req.params.id,(err, doc) =>{
+
+        Fund.find({email : req.user.email},(err,userh)=> {
+
+            console.log("inside fund", userh);
+            if(userh.length != 0){
+           
+            const j = userh[0].Amount - Number(doc.amount);
+            console.log("user exist",j );
+                Fund.update({email : req.user.email},{$set:{ Amount : j }},function (error, response) {
+                    console.log(error);
+                    console.log(response);
+                    
+                })
+            }
+          
+        })
+
         if(!err){
             res.redirect('/gold/listgold');
         }

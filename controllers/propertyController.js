@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const Property = mongoose.model('Property');     
 const passport = require('passport');
 const User = mongoose.model('user'); 
+const Fund = mongoose.model('Fund'); 
 
 
 router.get('/',isAuthenticated, (req,res) => {
@@ -33,6 +34,31 @@ function insertRecord(req,res){
     property.location = req.body.location;
     property.address = req.body.address;
     property.amount = req.body.amount;
+
+    Fund.find({email : req.user.email},(err,userh)=> {
+
+        console.log("inside fund", userh);
+        if(userh.length != 0){
+       
+        const j = userh[0].Amount + Number(req.body.amount);
+        console.log("user exist",j );
+            Fund.update({email : req.user.email},{$set:{ Amount : j }},function (error, response) {
+                console.log(error);
+                console.log(response);
+                
+            })
+        }
+        else {
+            const fund = new Fund()
+    fund.idno = req.user.email;
+    fund.createid = req.user.email;
+    fund.fullName = req.body.fullName;
+    fund.email = req.user.email;    
+    fund.month = req.body.month;
+    fund.Amount = req.body.salary;
+    fund.save();
+        }
+    })
 
     property.save((err, doc) => {
         if(!err)
@@ -133,6 +159,21 @@ router.get('/:id',isAuthenticated, (req,res) => {
 });
 router.get('/delete/:id',isAuthenticated,(req,res) => {
     Property.findByIdAndRemove(req.params.id,(err, doc) =>{
+        Fund.find({email : req.user.email},(err,userh)=> {
+
+            console.log("inside fund", userh);
+            if(userh.length != 0){
+           
+            const j = userh[0].Amount - Number(doc.amount);
+            console.log("user exist",j );
+                Fund.update({email : req.user.email},{$set:{ Amount : j }},function (error, response) {
+                    console.log(error);
+                    console.log(response);
+                    
+                })
+            }
+          
+        })
         if(!err){
             res.redirect('/property/listproperty');
         }

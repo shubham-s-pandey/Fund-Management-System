@@ -17,7 +17,7 @@ var salarySchema = new mongoose.Schema({
         type:String
     },
     salary: {
-        type:String
+        type:Number
     }
 });
 //custom validation for email

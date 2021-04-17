@@ -6,7 +6,7 @@
 
 <nav  class="navbar navbar-expand-md navbar-dark bg-dark" style="background-image: linear-gradient(to right, blue , cyan);margin-bottom: 15px; border-radius: 25px;">
 <div class="container">
-  <img src="/images/logo1.PNG" style="width: auto; height: auto; margin-top: auto;margin-bottom: auto; margin-left: auto; margin-right: auto;"></img>
+  <img src="/images/logo1.PNG" style="width: 350px; height: auto; margin-top: auto;margin-bottom: auto; margin-left: auto; margin-right: auto;"></img>
 <a href="/profile" style="background-image: linear-gradient(to right, red , orange);">Profile <i class="fa fa-home"></i></a>
   <a href="/salary" style="background-image: linear-gradient(to right, rgb(85, 23, 231) , rgb(53, 80, 235));">Salary <i class="fa fa-money"></i></a>
     <a href="/property" style="background-image: linear-gradient(to right, rgb(162, 0, 255) , rgb(255, 0, 76));">Property <i class="fa fa-building"></i></a>
@@ -21,3 +21,32 @@
 
 
 <h1 style="font: italic bold 36px/60px Georgia, serif;"><center>Fund Management System</center></h1>
+
+
+<table class="table table-hover" style="border-radius: 25px; background-image: linear-gradient(to bottom, white , rgb(221, 221, 221));"> 
+            <thead>
+        <tr>
+            <th>userName <i class="fa fa-address-book"></i></th>
+            {{!-- <th>Monti class="fa fa-mobile-phone"></i></th> --}}
+            <th>Amount <i class="fa fa-map"></i></th>
+            {{!-- <th>Created by <i class="fa fa-user-plus"></i></th>
+            <th>Last Modified by <i class="fa fa-gear"></i></th> --}}
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {{#each list}}
+       
+        <tr>
+            <td>{{this.createid}}</td>
+            {{!-- <td>{{this.month}}</td> --}}
+            <td>{{this.Amount}}</td>
+            {{!-- <td>{{this.createid}}</td>
+            <td> {{this.idno}}</td> --}}
+            
+        </tr>
+    
+        {{/each}}
+    </tbody>
+</table>

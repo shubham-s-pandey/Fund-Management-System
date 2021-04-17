@@ -13,11 +13,13 @@ var FundSchema = new mongoose.Schema({
     email:{
         type:String
     },
-    mobile: {
+    month: {
         type:String
     },
     Amount: {
-        type:String
+        type:Number,
+        default:0
+
     }
 });
 //custom validation for email

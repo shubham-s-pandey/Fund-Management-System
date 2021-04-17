@@ -6,8 +6,8 @@ var goldSchema = new mongoose.Schema({
     createid:{
         type:String
     },
-    fullName: {
-        type:String,
+    amount: {
+        type:Number,
         required: 'This field is required.'
     },
     email:{
@@ -15,9 +15,6 @@ var goldSchema = new mongoose.Schema({
     },
     mobile: {
         type:String
-    },
-    Amount: {
-        type: Number
     }
 });
 //custom validation for email

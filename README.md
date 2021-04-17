@@ -1,1 +1,11 @@
 # Fund-Management-System
+![Screenshot](https://github.com/shubham-s-pandey/Fund-Management-System/blob/main/Screenshots/1.PNG)
+![Screenshot](https://github.com/shubham-s-pandey/Fund-Management-System/blob/main/Screenshots/2.PNG)
+![Screenshot](https://github.com/shubham-s-pandey/Fund-Management-System/blob/main/Screenshots/3.PNG)
+![Screenshot](https://github.com/shubham-s-pandey/Fund-Management-System/blob/main/Screenshots/4.PNG)
+![Screenshot](https://github.com/shubham-s-pandey/Fund-Management-System/blob/main/Screenshots/5.PNG)
+![Screenshot](https://github.com/shubham-s-pandey/Fund-Management-System/blob/main/Screenshots/6.PNG)
+![Screenshot](https://github.com/shubham-s-pandey/Fund-Management-System/blob/main/Screenshots/7.PNG)
+![Screenshot](https://github.com/shubham-s-pandey/Fund-Management-System/blob/main/Screenshots/8.PNG)
+![Screenshot](https://github.com/shubham-s-pandey/Fund-Management-System/blob/main/Screenshots/9.PNG)
+![Screenshot](https://github.com/shubham-s-pandey/Fund-Management-System/blob/main/Screenshots/10.PNG)
